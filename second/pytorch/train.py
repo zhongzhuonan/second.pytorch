@@ -178,7 +178,7 @@ def train(config_path,
     ######################
     # 网络的建立
     ###################### 
-    net = build_network(model_cfg, measure_time).to(device)
+    net = build_network(model_cfg, measure_time).to(device)  #输出为[41,1600,1408] 范围/单位尺寸
     # if train_cfg.enable_mixed_precision:
     #     net.half()
     #     net.metrics_to_float()
@@ -209,7 +209,7 @@ def train(config_path,
     else:
         net_parallel = net
     optimizer_cfg = train_cfg.optimizer
-    loss_scale = train_cfg.loss_scale_factor
+    loss_scale = train_cfg.loss_scale_factor  #为-1
     fastai_optimizer = optimizer_builder.build(
         optimizer_cfg,
         net,
