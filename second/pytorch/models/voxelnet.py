@@ -46,6 +46,7 @@ def register_voxelnet(cls, name=None):
 def get_voxelnet_class(name):
     global REGISTERED_NETWORK_CLASSES
     assert name in REGISTERED_NETWORK_CLASSES, f"available class: {REGISTERED_NETWORK_CLASSES}"
+    #打印出为<class 'second.pytorch.models.voxelnet.VoxelNet'>
     return REGISTERED_NETWORK_CLASSES[name]
 
 class LossNormType(Enum):
