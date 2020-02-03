@@ -174,7 +174,10 @@ def train(config_path,
     eval_input_cfg = config.eval_input_reader
     model_cfg = config.model.second
     train_cfg = config.train_config
-
+    
+    ######################
+    # 网络的建立
+    ###################### 
     net = build_network(model_cfg, measure_time).to(device)
     # if train_cfg.enable_mixed_precision:
     #     net.half()
@@ -183,6 +186,7 @@ def train(config_path,
     target_assigner = net.target_assigner
     voxel_generator = net.voxel_generator
     print("num parameters:", len(list(net.parameters())))
+    
     torchplus.train.try_restore_latest_checkpoints(model_dir, [net])
     if pretrained_path is not None:
         model_dict = net.state_dict()
